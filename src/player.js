@@ -43,6 +43,10 @@ var Player = function(url, options) {
 		
 		this.demuxer.connect(JSMpeg.Demuxer.TS.STREAM.VIDEO_1, this.video);
 		this.video.connect(this.renderer);
+		
+		if (options.streaming) {
+			this.source.video = this.video;
+		}
 	}
 
 	if (options.audio !== false && JSMpeg.AudioOutput.WebAudio.IsSupported()) {

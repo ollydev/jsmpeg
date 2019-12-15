@@ -105,6 +105,9 @@ BaseDecoder.prototype.getCurrentTime = function() {
 	return this.decodedTime;
 };
 
+BaseDecoder.prototype.clearSequenceHeader = function() {
+};
+
 return BaseDecoder;
 
 })();

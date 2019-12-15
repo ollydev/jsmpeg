@@ -34,6 +34,7 @@ emcc \
 		'_mpeg1_decoder_set_index',
 		'_mpeg1_decoder_did_write',
 		'_mpeg1_decoder_has_sequence_header',
+		'_mpeg1_decoder_clear_sequence_header',
 		'_mpeg1_decoder_get_frame_rate',
 		'_mpeg1_decoder_get_coded_size',
 		'_mpeg1_decoder_get_width',

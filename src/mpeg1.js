@@ -7,7 +7,8 @@ var MPEG1 = function(options) {
 	JSMpeg.Decoder.Base.call(this, options);
 
 	this.onDecodeCallback = options.onVideoDecode;
-
+	this.onDecodeSequenceHeaderCallback = options.onVideoDecodeSequenceHeader;
+	
 	var bufferSize = options.videoBufferSize || 512*1024;
 	var bufferMode = options.streaming
 		? JSMpeg.BitBuffer.MODE.EVICT
@@ -114,7 +115,14 @@ MPEG1.prototype.decodeSequenceHeader = function() {
 	}
 
 	this.hasSequenceHeader = true;
-};
+	if (this.onDecodeSequenceHeaderCallback) {
+		this.onDecodeSequenceHeaderCallback(this);
+	}
+ };
+
+MPEG1.prototype.clearSequenceHeader = function() {
+	this.hasSequenceHeader = false;
+}
 
 MPEG1.prototype.initBuffers = function() {
 	this.intraQuantMatrix = MPEG1.DEFAULT_INTRA_QUANT_MATRIX;

@@ -87,6 +87,7 @@ WebGLRenderer.prototype.resize = function(width, height) {
 	this.canvas.width = this.width;
 	this.canvas.height = this.height;
 
+	this.hasTextureData = {};
 	this.gl.useProgram(this.program);
 
 	var codedWidth = ((this.width + 15) >> 4) << 4;

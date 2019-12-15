@@ -822,6 +822,21 @@ int mpeg1_decoder_has_sequence_header(mpeg1_decoder_t *self) {
 	return self->has_sequence_header;
 }
 
+void mpeg1_decoder_clear_sequence_header(mpeg1_decoder_t *self) {
+	if (self->has_sequence_header) {
+		free(self->planes_current.y);
+		free(self->planes_current.cr);
+		free(self->planes_current.cb);
+
+		free(self->planes_forward.y);
+		free(self->planes_forward.cr);
+		free(self->planes_forward.cb);
+
+		self->has_sequence_header = false;
+	}
+
+}
+
 float mpeg1_decoder_get_frame_rate(mpeg1_decoder_t *self) {
 	return self->frame_rate;
 }
